@@ -1,65 +1,85 @@
 import Image from "next/image";
+// Import ikon yang dibutuhkan (Instagram, GitHub, LinkedIn, Email)
+import { SiLaravel, SiMysql, SiNextdotjs, SiTypescript, SiInstagram, SiGithub, SiLinkedin } from "react-icons/si";
+import { MdEmail, MdArrowForward } from "react-icons/md"; // Tambah panah untuk tombol
+
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <main className="hero">
+        <div className="hero-text">
+          <h1 style={{ fontSize: '60px', marginBottom: '20px' }}>
+            Hi, Saya <br />
+            {/* Nama diberi efek gradasi */}
+            <span className="text-gradient">Rezza Alfat</span> 👋
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p style={{ fontSize: '18px', color: '#a1a1aa', maxWidth: '500px', lineHeight: '1.8' }}>
+            Mahasiswa Sistem Informasi yang fokus pada pengembangan
+            aplikasi web modern. Spesialis dalam arsitektur skalabel menggunakan ekosistem 
+            <span style={{color: '#38bdf8', fontWeight: 'bold'}}> Laravel & MySQL</span>.
           </p>
+
+          {/* Skill Badges */}
+          <div className="skill-badges">
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <SiLaravel color="#FF2D20" /> Laravel
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <SiMysql color="#4479A1" /> MySQL
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <SiNextdotjs color="white" /> Next.js
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <SiTypescript color="#3178C6" /> TypeScript
+            </span>
+          </div>
+          
+          {/* TOMBOL BARU */}
+          <div className="hero-btn">
+            {/* Tombol Neon dengan Panah */}
+            <a href="/projects" className="btn-neon">
+              Lihat Project <MdArrowForward size={20} />
+            </a>
+            
+            {/* Tombol GitHub Dark */}
+            <a href="https://github.com/username" className="btn-dark">
+              <SiGithub size={20} /> GitHub
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        <Image
+          src="/profile.jpg"
+          alt="Rezza"
+          width={350}
+          height={350}
+          className="profile-img"
+        />
       </main>
-    </div>
+
+      {/* --- BAGIAN FOOTER BARU --- */}
+      <footer className="footer">
+        <p>© 2026 Rezza Alfat. All rights reserved.</p>
+        
+        {/* Ikon Sosial Media (Urutan: IG, Github, LinkedIn, Email) */}
+        <div className="social-links">
+          <a href="https://instagram.com/zzaref.al_?igsh=MXNnZDV3MnB3MWgzNA==" target="_blank" rel="noopener noreferrer">
+            <SiInstagram size={24} />
+          </a>
+          <a href="https://github.com/RezzaHarya" target="_blank" rel="noopener noreferrer">
+            <SiGithub size={24} />
+          </a>
+          <a href="https://linkedin.com/in/rezza-alfat-3ba29736b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">
+            <SiLinkedin size={24} />
+          </a>
+          <a href="mailto:rezzaalfat@gmail.com">
+            <MdEmail size={26} />
+          </a>
+        </div>
+      </footer>
+    </>
   );
 }

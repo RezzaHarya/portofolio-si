@@ -1,26 +1,387 @@
-@import "tailwindcss";
-
+/* --- KONFIGURASI WARNA (Ganti di sini jika ingin ubah tema) --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-color: #0b1120;
+  --card-bg: #162032;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6; /* Blue 500 */
+  --primary-hover: #2563eb;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Update body kamu dengan ini */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: 'Outfit', sans-serif; /* Ganti font nanti */
+  background-color: #050505;
+  color: white;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  
+  /* Membuat pola Grid halus */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px; /* Ukuran kotak-kotak */
+}
+
+/* Efek "Glow" biru di pojok atas */
+body::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+.section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3 {
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.5px; /* Sedikit dirapatkan agar modern */
+  font-family: 'Inter', sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+h2 {
+  margin-top: 40px;
+  border-left: 4px solid var(--primary); /* Aksen garis di sebelah judul */
+  padding-left: 15px;
+}
+
+/* Navbar dengan efek kaca (Glassmorphism) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(15, 23, 42, 0.8); /* Transparan */
+  backdrop-filter: blur(10px); /* Efek blur */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Styling Link (Home, About, dll) */
+.nav-links {
+  display: flex;
+  gap: 30px; /* Jarak antar menu */
+}
+
+.nav-links a {
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase; /* Huruf besar semua */
+  font-size: 12px;
+  letter-spacing: 2px; /* Jarak antar huruf renggang */
+  font-weight: 600;
+  color: #a1a1aa;
+}
+
+.nav-links a:hover {
+  color: #6366f1; /* Warna saat disorot (sesuai tema Indigo) */
+}
+
+/* Styling Nama/Brand */
+.nav-brand {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.hero {
+  max-width: 1100px;
+  min-height: 80vh;
+  margin: 60px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 0 40px;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Efek gradasi pada teks judul */
+}
+
+.hero-text p {
+  margin: 25px 0;
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 500px;
+}
+
+.hero-btn {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+/* Tombol Utama (Lihat Project) - Efek Border Neon */
+.btn-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 50px; /* Bentuk kapsul */
+  background: #000; /* Background dalam tombol hitam */
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  
+  /* Trik membuat Border Gradasi */
+  border: 2px solid transparent;
+  background-image: linear-gradient(#000, #000), linear-gradient(90deg, #3b82f6, #ec4899);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); /* Efek Glow saat hover */
+  transform: translateY(-2px);
+}
+
+/* Tombol Kedua (GitHub) - Dark Glass */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05); /* Transparan */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e4e4e7;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+/* Tombol Utama - Menggunakan warna aksen */
+.btn {
+  padding: 12px 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); /* Glow effect */
+}
+
+/* Tombol Outline */
+.btn-outline {
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--text-main);
+  background: rgba(255,255,255,0.05);
+}
+
+.profile-img {
+  border-radius: 50%;
+  border: 4px solid var(--card-bg); /* Border agar terpisah dari background */
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.2); /* Shadow berwarna aksen */
+}
+
+/* Project Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.project-card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+  background: var(--card-bg); /* Warna kartu berbeda dengan background body */
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* Skill Badges - Tampilan seperti 'pill' */
+.skill-badges {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.skill-badges span {
+  background: rgba(99, 102, 241, 0.1); /* Background transparan berwarna */
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  color: #a5b4fc; /* Warna teks badge yang serasi */
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tech {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tech span {
+  background: #0f172a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  border: 1px solid #334155;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 80px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* social icons di footer */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* Jarak antar ikon */
+  margin-top: 20px; /* Jarak dari teks copyright ke ikon */
+}
+
+.social-links a {
+  color: var(--text-muted); /* Warna awal abu-abu */
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Efek Hover (Saat kursor diarahkan ke ikon) */
+.social-links a:hover {
+  color: var(--primary); /* Berubah jadi warna tema (Indigo/Ungu) */
+  transform: translateY(-3px); /* Ikon naik sedikit */
+}
+
+/* Animasi Fade Up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section, .hero {
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* animasi float pada gambar profil */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.profile-img {
+  border-radius: 50%;
+  border: 4px solid rgba(99, 102, 241, 0.3); /* Border semi transparan */
+  box-shadow: 0 0 50px rgba(99, 102, 241, 0.3); /* Glow lebih kuat */
+  
+  /* Pasang animasinya */
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Navbar Kaca (Glassmorphism) */
+.glass-navbar {
+  position: fixed; /* Agar menempel di atas layar saat discroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px; /* Spasi dalam */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* --- Kunci Efek Transparan --- */
+  background: rgba(15, 23, 42, 0.7); /* Warna gelap tapi transparan (70%) */
+  backdrop-filter: blur(12px); /* Efek blur di belakangnya */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis bawah tipis samar */
+  z-index: 1000; /* Pastikan selalu di paling atas */
+  box-sizing: border-box;
+}
+
+/* Class Khusus untuk Warna Nama (Gradasi Biru-Ungu) */
+.text-gradient {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899); /* Biru ke Pink */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Tulisan jadi transparan agar background muncul */
 }
