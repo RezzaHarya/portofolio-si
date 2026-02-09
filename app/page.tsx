@@ -44,7 +44,7 @@ export default function Home() {
           
           {/* TOMBOL */}
           <div className="hero-btn">
-            <a href="/projects" className="btn-neon">
+            <a href="https://rezzaharya.github.io/portofolio-si/projects" className="btn-neon">
               Lihat Project <MdArrowForward size={20} />
             </a>
             
