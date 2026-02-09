@@ -385,3 +385,63 @@ h2 {
   background-clip: text;
   color: transparent; /* Tulisan jadi transparan agar background muncul */
 }
+
+/* --- MOBILE RESPONSIVE FIX (Wajib di Paling Bawah) --- */
+@media screen and (max-width: 768px) {
+  
+  /* Reset margin body agar tidak ada scroll samping */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* 1. HERO SECTION: Atur ulang layout jadi atas-bawah */
+  .hero {
+    display: flex !important;
+    flex-direction: column-reverse; /* Foto di atas, teks di bawah */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px !important;
+    padding: 0 20px;
+    height: auto !important;
+  }
+
+  /* 2. TEXT CONTAINER: Paksa semua anak elemen ke tengah */
+  .hero-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* KUNCI: Badge dan Tombol jadi tengah */
+  }
+
+  .hero-text h1 {
+    font-size: 36px !important; /* Kecilkan font judul di HP */
+    line-height: 1.2;
+    margin-bottom: 20px !important;
+  }
+
+  /* 3. SKILL BADGES & TOMBOL */
+  .skill-badges {
+    justify-content: center !important;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .hero-btn {
+    width: 100%;
+    flex-direction: column; /* Tombol tumpuk ke bawah */
+    align-items: center;
+  }
+
+  .btn-neon, .btn-dark {
+    width: 100%; /* Tombol lebar penuh */
+    justify-content: center;
+  }
+
+  /* 4. FOTO PROFIL */
+  .profile-img {
+    margin-bottom: 30px;
+    width: 200px !important; /* Ukuran pas di HP */
+    height: 200px !important;
+  }
+}
